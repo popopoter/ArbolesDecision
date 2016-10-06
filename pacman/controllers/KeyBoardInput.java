@@ -1,4 +1,4 @@
-package pacman.controllers;
+package ArbolesDecision.pacman.controllers;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

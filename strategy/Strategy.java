@@ -1,6 +1,4 @@
-package strategy;
-
-import javax.swing.SwingConstants;
+package ArbolesDecision.strategy;
 
 public interface Strategy {
 	

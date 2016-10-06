@@ -1,6 +1,6 @@
-package dataRecording;
+package ArbolesDecision.dataRecording;
 
-import pacman.game.util.*;
+import ArbolesDecision.pacman.game.util.*;
 
 /**
  * 

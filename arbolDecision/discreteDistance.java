@@ -1,4 +1,4 @@
-package arbolDecision;
+package ArbolesDecision.arbolDecision;
 
 public enum discreteDistance {
 	CLOSE{

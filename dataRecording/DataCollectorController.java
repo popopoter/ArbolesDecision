@@ -1,10 +1,8 @@
-package dataRecording;
+package ArbolesDecision.dataRecording;
 
-import pacman.controllers.*;
-import pacman.game.Constants.DM;
-import pacman.game.Constants.GHOST;
-import pacman.game.Game;
-import pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.controllers.Controller;
+import ArbolesDecision.pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.game.Game;
 
 /**
  * The DataCollectorHumanController class is used to collect training data from playing PacMan.

@@ -1,19 +1,21 @@
-package pacman.game;
+package ArbolesDecision.pacman.game;
+
+import static ArbolesDecision.pacman.game.Constants.*;
 
 import java.util.BitSet;
 import java.util.EnumMap;
-import java.util.Random;
 import java.util.Map.Entry;
-import pacman.game.Constants.DM;
-import pacman.game.Constants.MOVE;
-import pacman.game.internal.Ghost;
-import pacman.game.internal.Maze;
-import pacman.game.internal.Node;
-import pacman.game.internal.PacMan;
-import pacman.game.internal.PathsCache;
-import strategy.Strategy;
+import java.util.Random;
 
-import static pacman.game.Constants.*;
+import ArbolesDecision.pacman.game.Constants.GHOST;
+import ArbolesDecision.pacman.game.Constants.DM;
+import ArbolesDecision.pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.game.internal.Ghost;
+import ArbolesDecision.pacman.game.internal.Maze;
+import ArbolesDecision.pacman.game.internal.Node;
+import ArbolesDecision.pacman.game.internal.PacMan;
+import ArbolesDecision.pacman.game.internal.PathsCache;
+import ArbolesDecision.strategy.Strategy;
 
 /**
  * The implementation of Ms Pac-Man. This class contains the game engine and all methods required to

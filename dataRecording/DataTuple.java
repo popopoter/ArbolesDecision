@@ -1,12 +1,10 @@
-package dataRecording;
+package ArbolesDecision.dataRecording;
 
-import pacman.game.Constants;
-import pacman.game.Constants.DM;
-import pacman.game.Constants.GHOST;
-import pacman.game.Constants.MOVE;
-import pacman.game.Game;
-import strategy.Strategy;
-import arbolDecision.discreteDistance;
+import ArbolesDecision.arbolDecision.discreteDistance;
+import ArbolesDecision.pacman.game.Constants.GHOST;
+import ArbolesDecision.pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.game.Game;
+import ArbolesDecision.strategy.Strategy;
 
 
 public class DataTuple {
@@ -34,6 +32,7 @@ public class DataTuple {
 	public discreteDistance closestGhost;
 	
 	// General game state this - not normalized!
+	/*public int mazeIndex;
 	private boolean isBlinkyEdible = false;
 	private boolean isInkyEdible = false;
 	private boolean isPinkyEdible = false;
@@ -43,7 +42,6 @@ public class DataTuple {
 	private int inkyDist = -1;
 	private int pinkyDist = -1;
 	private int sueDist = -1;
-	/*public int mazeIndex;
 	public int numOfPillsLeft;
 	public int currentLevel;
 	public int pacmanPosition;
@@ -152,8 +150,7 @@ public class DataTuple {
 		
 		this.strategy = Strategy.valueOf(dataSplit[0]);
 		this.closestGhost = discreteDistance.valueOf(dataSplit[1]);
-		
-		/*
+				/*
 		this.isBlinkyEdible = Boolean.parseBoolean(dataSplit[1]);
 		this.isInkyEdible = Boolean.parseBoolean(dataSplit[2]);
 		this.isPinkyEdible = Boolean.parseBoolean(dataSplit[3]);

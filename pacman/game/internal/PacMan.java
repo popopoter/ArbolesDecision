@@ -1,6 +1,6 @@
-package pacman.game.internal;
+package ArbolesDecision.pacman.game.internal;
 
-import pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.game.Constants.MOVE;
 
 /*
  * Data structure to hold all information pertaining to Ms Pac-Man.

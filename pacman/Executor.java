@@ -1,4 +1,6 @@
-package pacman;
+package ArbolesDecision.pacman;
+
+import static ArbolesDecision.pacman.game.Constants.*;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -10,25 +12,15 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Random;
 
-import dataRecording.DataCollectorController;
-import pacman.controllers.Controller;
-import pacman.controllers.HumanController;
-import pacman.controllers.KeyBoardInput;
-import pacman.controllers.examples.AggressiveGhosts;
-import pacman.controllers.examples.Legacy;
-import pacman.controllers.examples.Legacy2TheReckoning;
-import pacman.controllers.examples.NearestPillPacMan;
-import pacman.controllers.examples.NearestPillPacManVS;
-import pacman.controllers.examples.RandomGhosts;
-import pacman.controllers.examples.RandomNonRevPacMan;
-import pacman.controllers.examples.RandomPacMan;
-import pacman.controllers.examples.StarterGhosts;
-import pacman.controllers.examples.StarterPacMan;
-import pacman.entries.pacman.MyPacMan;
-import pacman.game.Game;
-import pacman.game.GameView;
-
-import static pacman.game.Constants.*;
+import ArbolesDecision.dataRecording.DataCollectorController;
+import ArbolesDecision.pacman.game.Constants.GHOST;
+import ArbolesDecision.pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.controllers.Controller;
+import ArbolesDecision.pacman.controllers.HumanController;
+import ArbolesDecision.pacman.controllers.examples.StarterGhosts;
+import ArbolesDecision.pacman.entries.pacman.MyPacMan;
+import ArbolesDecision.pacman.game.Game;
+import ArbolesDecision.pacman.game.GameView;
 
 /**
  * This class may be used to execute the game in timed or un-timed modes, with or without

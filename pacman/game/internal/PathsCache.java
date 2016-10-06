@@ -1,12 +1,13 @@
-package pacman.game.internal;
+package ArbolesDecision.pacman.game.internal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Set;
-import pacman.game.Constants.MOVE;
-import pacman.game.Game;
+
+import ArbolesDecision.pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.game.Game;
 
 /*
  * Pre-computes paths for more efficient execution of the game. It is a tradeoff between loading times, execution speed,

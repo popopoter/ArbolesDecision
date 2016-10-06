@@ -1,11 +1,15 @@
-package pacman.controllers.examples;
+package ArbolesDecision.pacman.controllers.examples;
+
+import static ArbolesDecision.pacman.game.Constants.*;
 
 import java.util.EnumMap;
 import java.util.Random;
-import pacman.controllers.Controller;
-import pacman.game.Game;
 
-import static pacman.game.Constants.*;
+import ArbolesDecision.pacman.game.Constants.DM;
+import ArbolesDecision.pacman.game.Constants.GHOST;
+import ArbolesDecision.pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.controllers.Controller;
+import ArbolesDecision.pacman.game.Game;
 
 /*
  * Ghost team controller as part of the starter package - simply upload this file as a zip called

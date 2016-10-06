@@ -1,4 +1,4 @@
-package pacman.game.util;
+package ArbolesDecision.pacman.game.util;
 
 import java.util.Date;
 

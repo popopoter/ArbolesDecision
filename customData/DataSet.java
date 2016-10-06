@@ -1,10 +1,9 @@
-package customData;
+package ArbolesDecision.customData;
 
-import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.List;
 
-import dataRecording.DataSaverLoader;
+import ArbolesDecision.dataRecording.DataSaverLoader;
 
 public class DataSet {
 	
@@ -19,13 +18,13 @@ public class DataSet {
 		atributes = new Hashtable<Integer,String>();
 		
 		
-		dataRecording.DataTuple[] aux = DataSaverLoader.LoadPacManData();
+		ArbolesDecision.dataRecording.DataTuple[] aux = DataSaverLoader.LoadPacManData();
 		tuples = new DataTuple[aux.length];
 		int i = 0;
-		for(dataRecording.DataTuple a : aux){
+		for(ArbolesDecision.dataRecording.DataTuple a : aux){
 			
 			tuples[i]= new DataTuple(a);
-			
+			i++;
 			
 		}
 		
@@ -49,26 +48,28 @@ public class DataSet {
 	}
 
 	public void print( ){
-		
-		
-		for(int i = 0; i < atributes.size();i++ ){
-			System.out.println(atributes.get(i));
+		Enumeration <String>  enumeration =atributes.elements();
+		while(enumeration.hasMoreElements()){
+			System.out.print(enumeration.nextElement()+" ");
+			
 			
 		}
+		
 		System.out.println("  ");
 		
+		int i = 0;
 		for(DataTuple d : tuples){
-			int i = 0;
 			if(atributes.get(0) != null){
 				
-				System.out.println(d.valores[0]);
+				System.out.print(d.valores[0]+" ");
 			}
 			if(atributes.get(1) != null){
 				
-				System.out.println(d.valores[1]);
+				System.out.print(d.valores[1]);
 			}
+			System.out.println("  ");
 			
-			if(i > 100)
+			if(i > 10)
 				break;
 			i++;
 		}

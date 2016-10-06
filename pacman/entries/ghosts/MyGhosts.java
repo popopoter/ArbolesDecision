@@ -1,10 +1,11 @@
-package pacman.entries.ghosts;
+package ArbolesDecision.pacman.entries.ghosts;
 
 import java.util.EnumMap;
-import pacman.controllers.Controller;
-import pacman.game.Constants.GHOST;
-import pacman.game.Constants.MOVE;
-import pacman.game.Game;
+
+import ArbolesDecision.pacman.controllers.Controller;
+import ArbolesDecision.pacman.game.Constants.GHOST;
+import ArbolesDecision.pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.game.Game;
 
 /*
  * This is the class you need to modify for your entry. In particular, you need to

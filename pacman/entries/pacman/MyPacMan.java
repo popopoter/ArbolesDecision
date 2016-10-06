@@ -1,15 +1,14 @@
-package pacman.entries.pacman;
+package ArbolesDecision.pacman.entries.pacman;
 
 import java.util.ArrayList;
 
-import pacman.controllers.Controller;
-import pacman.game.Constants.DM;
-import pacman.game.Constants.GHOST;
-import pacman.game.Constants.MOVE;
-import pacman.game.Game;
-import strategy.Eat;
-import strategy.Run;
-import strategy.Strategy;
+import ArbolesDecision.pacman.controllers.Controller;
+import ArbolesDecision.pacman.game.Constants.DM;
+import ArbolesDecision.pacman.game.Constants.GHOST;
+import ArbolesDecision.pacman.game.Constants.MOVE;
+import ArbolesDecision.pacman.game.Game;
+import ArbolesDecision.strategy.Eat;
+import ArbolesDecision.strategy.Run;
 
 /*
  * This is the class you need to modify for your entry. In particular, you need to

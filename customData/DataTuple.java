@@ -1,7 +1,7 @@
-package customData;
+package ArbolesDecision.customData;
 
-import arbolDecision.discreteDistance;
-import strategy.Strategy;
+import ArbolesDecision.arbolDecision.discreteDistance;
+import ArbolesDecision.strategy.Strategy;
 
 public class DataTuple {
 	
@@ -17,13 +17,14 @@ public class DataTuple {
 		
 	}
 	
-	public DataTuple(dataRecording.DataTuple data){
-		System.out.println("Bug");
+	public DataTuple(ArbolesDecision.dataRecording.DataTuple data){
 		
-		System.out.println((String) data.closestGhost.toString());
-		//valores[0]= data.strategy.toString();
+		valores = new String[maxAtributos];
 		
+		valores[0]= data.strategy.toString();
+		valores[1]= data.closestGhost.toString();
 		
+		//System.out.println(data.strategy);
 		
 	}
 public DataTuple(){

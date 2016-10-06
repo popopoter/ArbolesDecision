@@ -1,19 +1,17 @@
-package pacman;
+package ArbolesDecision.pacman;
 
-import dataRecording.DataSaverLoader;
-import dataRecording.DataTuple;
-import customData.DataSet;
+import ArbolesDecision.customData.DataSet;
+import ArbolesDecision.dataRecording.DataSaverLoader;
+import ArbolesDecision.dataRecording.DataTuple;
 public class DataTester {
 	public static void main(String... args) {
-		DataTuple[] tuples = DataSaverLoader.LoadPacManData();
-		for(DataTuple t: tuples){
-			
-			System.out.print(t.strategy.toString());
-			System.out.println(t.closestGhost);
-		}
+		//DataTuple[] tuples = DataSaverLoader.LoadPacManData();
+		System.out.println("Hola");
 		DataSet s = new DataSet();
-		s.atributes.put(0,"Distance");
-		s.atributes.put(1,"Strategy");
+		s.atributes.put(0,"Strategy");
+		s.atributes.put(1,"Distance");
+		s.print();
+		s.eliminarAtributo(0);
 		s.print();
 		/*int counter = 0;
 		System.out.println("");

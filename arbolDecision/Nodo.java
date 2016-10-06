@@ -1,9 +1,7 @@
-package arbolDecision;
+package ArbolesDecision.arbolDecision;
 
-import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
-import java.util.List;
 
 public class Nodo {
 	
