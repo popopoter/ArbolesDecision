@@ -17,17 +17,17 @@ public class Nodo {
 		
 		
 	}
+	public Nodo(int value){
+		
+		this.value = value;
+		children = new Hashtable<String,Nodo>();
+		
+		
+	}
 	public Nodo next(String s){
 		
 		
 		return children.get(s);
-		
-	}
-	public Nodo(int value){
-	
-		this.value = value;
-		children = new Hashtable<String,Nodo>();
-		
 		
 	}
 	public void addChild(String s ,Nodo n){

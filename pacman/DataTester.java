@@ -8,8 +8,9 @@ public class DataTester {
 		//DataTuple[] tuples = DataSaverLoader.LoadPacManData();
 		System.out.println("Hola");
 		DataSet s = new DataSet();
-		s.atributes.put(0,"Strategy");
-		s.atributes.put(1,"Distance");
+		
+		s.atributes.put(1,"Strategy");
+		s.atributes.put(0,"Distance");
 		s.print();
 		s.eliminarAtributo(0);
 		s.print();
