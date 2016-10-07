@@ -5,7 +5,8 @@ import java.util.Hashtable;
 
 public class Nodo {
 	
-	int value;
+	String solution;
+	//int value;
 	atribute atribute;
 	Dictionary <String,Nodo> children;
 	
@@ -17,13 +18,7 @@ public class Nodo {
 		
 		
 	}
-	public Nodo(int value){
-		
-		this.value = value;
-		children = new Hashtable<String,Nodo>();
-		
-		
-	}
+	
 	public Nodo next(String s){
 		
 		

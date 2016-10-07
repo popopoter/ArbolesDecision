@@ -9,11 +9,15 @@ public class DataTester {
 		System.out.println("Hola");
 		DataSet s = new DataSet();
 		
-		s.atributes.put(1,"Strategy");
-		s.atributes.put(0,"Distance");
+		s.atributes.put("Strategy",0);
+		s.atributes.put("Distance",1);
 		s.print();
-		s.eliminarAtributo(0);
+		s.eliminarAtributo("Distance");
 		s.print();
+		System.out.println(s.sameClass("Strategy"));
+		s.eliminar("Strategy", "Run");
+		s.print();
+		System.out.println(s.sameClass("Strategy"));
 		/*int counter = 0;
 		System.out.println("");
 		for (DataTuple d : tuples) {

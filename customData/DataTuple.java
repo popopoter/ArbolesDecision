@@ -7,7 +7,7 @@ public class DataTuple {
 	
 	String[] valores;
 	int maxAtributos = 2;
-	
+	Boolean active = true;
 	public DataTuple(discreteDistance distance, Strategy s){
 		
 		
@@ -15,6 +15,14 @@ public class DataTuple {
 		
 		
 		
+	}
+	public void disactive(){
+		active = false;
+		
+	}
+	public void active(){
+		
+		active = true;
 	}
 	
 	public DataTuple(ArbolesDecision.dataRecording.DataTuple data){

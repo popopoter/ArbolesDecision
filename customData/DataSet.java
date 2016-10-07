@@ -1,5 +1,6 @@
 package ArbolesDecision.customData;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -8,14 +9,14 @@ import ArbolesDecision.dataRecording.DataSaverLoader;
 public class DataSet {
 	
 	//int numberOfAtributes;
-	public Hashtable <Integer,String> atributes;
+	public Hashtable <String,Integer> atributes;
 	DataTuple[] tuples;
 	
 	
 	public DataSet(){
 		
 		//numberOfAtributes= nAtri;
-		atributes = new Hashtable<Integer,String>();
+		atributes = new Hashtable<String,Integer>();
 		
 		
 		ArbolesDecision.dataRecording.DataTuple[] aux = DataSaverLoader.LoadPacManData();
@@ -31,14 +32,10 @@ public class DataSet {
 		
 	}
 	
-	public void eliminarAtributo(int posicion){
+	public void eliminarAtributo(String atribute){
 		
-		System.out.println("Eliminando "+atributes.get(posicion));
-		atributes.remove(posicion);
-		
-		
-		
-		
+		System.out.println("Eliminando "+atribute);
+		atributes.remove(atribute);
 		
 	}
 	
@@ -46,24 +43,31 @@ public class DataSet {
 		
 		return posicion;
 	}
-
+	public ArrayList <String>  getAtributes(){
+		Enumeration <String>  enumeration = atributes.keys();
+		ArrayList<String> atributes = new ArrayList<String>();
+				while(enumeration.hasMoreElements()){
+					atributes.add((enumeration.nextElement()));	
+				}
+		return atributes;
+	}
 	public void print( ){
-		Enumeration <String>  enumeration =atributes.elements();
-		while(enumeration.hasMoreElements()){
-			System.out.print(enumeration.nextElement()+" ");
-			
-			
+		ArrayList<String> atributesString = getAtributes();
+		for(String atribute: atributesString){
+			System.out.print(atribute + " ");
 		}
+		
 		
 		System.out.println("  ");
 		
 		int i = 0;
 		for(DataTuple d : tuples){
-			if(atributes.get(0) != null){
+			if(d.active){
+			if(atributes.get("Strategy") != null){
 				
 				System.out.print(d.valores[0]+" ");
 			}
-			if(atributes.get(1) != null){
+			if(atributes.get("Distance") != null){
 				
 				System.out.print(d.valores[1]);
 			}
@@ -72,10 +76,29 @@ public class DataSet {
 			if(i > 10)
 				break;
 			i++;
+			}
 		}
-			
-	
+	}
+			public Boolean sameClass(String clas){
+			int indx = atributes.get(clas);
+			String tmp = tuples[0].valores[indx];
+			for(DataTuple d : tuples){
+				if(d.valores[indx] != tmp && d.active){
+					
+					return false;
+				
+				}
+			}
+			return true;
 		}
-		
+		public void eliminar(String atributo, String valor){
+			int indx = atributes.get(atributo);
+			for(DataTuple d : tuples){
+				System.out.println(d.valores[indx]+" / "+valor );
+				if(d.valores[indx].equals(valor)){
+					d.disactive();
+				}
+			}
+		}
 		
 } 

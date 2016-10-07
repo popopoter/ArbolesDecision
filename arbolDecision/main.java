@@ -7,12 +7,12 @@ public class main {
 
 		tree tree = new tree();
 		
-		Nodo nuevo = new Nodo(1);
-		Nodo nuevo1 = new Nodo(2);
-		Nodo nuevo2 = new Nodo(3);
-		Nodo nuevo3 = new Nodo(4);
-		Nodo nuevo4 = new Nodo(5);
-		Nodo nuevo5 = new Nodo(6);
+		Nodo nuevo = new Nodo();
+		Nodo nuevo1 = new Nodo();
+		Nodo nuevo2 = new Nodo();
+		Nodo nuevo3 = new Nodo();
+		Nodo nuevo4 = new Nodo();
+		Nodo nuevo5 = new Nodo();
 		
 		tree.raiz.addChild("FAR", nuevo); 
 		nuevo.addChild("RUN",nuevo2);
@@ -25,7 +25,7 @@ public class main {
 		nuevo = tree.raiz.next("FAR");
 		for(int i = 0;i<10;i++){
 		if(nuevo.isLeaf()){
-			System.out.println(nuevo.value);
+			System.out.println();
 			break;
 		}
 		else nuevo = nuevo.next("EAT");
