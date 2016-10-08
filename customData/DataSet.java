@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import Arboles.atributos.Atributes;
 import ArbolesDecision.dataRecording.DataSaverLoader;
 
 public class DataSet {
 	
 	//int numberOfAtributes;
-	public Hashtable <String,Integer> atributes;
+	public Hashtable <Atributes,Integer> atributes;
 	public DataTuple[] tuples;
 	
 	
 	public DataSet(){
 		
 		//numberOfAtributes= nAtri;
-		atributes = new Hashtable<String,Integer>();
+		atributes = new Hashtable<Atribute,Integer>();
 		
 		
 		ArbolesDecision.dataRecording.DataTuple[] aux = DataSaverLoader.LoadPacManData();
@@ -78,6 +79,16 @@ public class DataSet {
 		
 		return posicion;
 	}*/
+	public int countConditional(int atributeIndex, String condition){
+		int count = 0;
+		for(DataTuple tuple : tuples){
+			if(tuple.valores[atributeIndex].equals(condition))
+				count++;
+		}
+		return count;
+		
+		
+	}
 	public ArrayList <String>  getAtributes(){
 		Enumeration <String>  enumeration = atributes.keys();
 		ArrayList<String> atributes = new ArrayList<String>();
@@ -188,7 +199,7 @@ public class DataSet {
 				
 					
 				}
-			//nuevoDataSet.eliminarAtributo(atribute);
+			nuevoDataSet.eliminarAtributo(atribute);
 			return nuevoDataSet;
 }
 			

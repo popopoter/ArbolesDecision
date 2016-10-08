@@ -16,9 +16,9 @@ public class DataTester {
 		System.out.println(s.countTuples());
 		System.out.println(s.claseMayoritaria());
 		DataSet j = s.divide("Strategy", "Eat");
-		DataSet h = j.divide("Strategy", "Run");
-		System.out.println(h.isEmpty());
 		
+		System.out.println(j.countTuples());
+		System.out.println(s.countConditional(0,"Eat"));
 		//s.print();
 		//System.out.println(s.claseMayoritaria());
 		//ArrayList<String> list = s.atributeValues("Strategy");

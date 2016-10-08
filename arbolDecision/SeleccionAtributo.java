@@ -1,5 +1,9 @@
 package ArbolesDecision.arbolDecision;
 
+import java.util.Hashtable;
+
+import ArbolesDecision.customData.DataSet;
+
 public class SeleccionAtributo {
 	
 	
@@ -7,6 +11,26 @@ public class SeleccionAtributo {
 		
 		
 		return "Distance";
+	}
+	public static double log2(double value){
+		double sol;
+		sol = Math.log10(value) / Math.log10(2);
+		
+		return sol;
+		
+	}
+	public static String ID3( Hashtable <String,Integer> atributes){
+		
+		double info;
+				
+		
+		return "";
+	}
+	public double getInfo(DataSet dataSet,int index){
+		double info;
+		
+		
+		return info;
 	}
 
 }
