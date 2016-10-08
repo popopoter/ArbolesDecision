@@ -27,7 +27,7 @@ public class DataTuple {
 	}
 
 	//public MOVE DirectionChosen;
-	public Strategy strategy;
+	public String strategy;
 	public int closestNonEdibleGhost;
 	public discreteDistance closestGhost;
 	
@@ -68,7 +68,7 @@ public class DataTuple {
 			//move = game.getPacmanLastMoveMade();
 		//}
 
-		this.strategy = game.strategy;
+		this.strategy = game.strategy.toString();
 		
 		int blinkyDistance = 1000;
 		int inkyDistance = 1000;
@@ -148,7 +148,7 @@ public class DataTuple {
 	public DataTuple(String data) {
 		String[] dataSplit = data.split(";");
 		
-		this.strategy = Strategy.valueOf(dataSplit[0]);
+		this.strategy = String.valueOf(dataSplit[0]);
 		this.closestGhost = discreteDistance.valueOf(dataSplit[1]);
 				/*
 		this.isBlinkyEdible = Boolean.parseBoolean(dataSplit[1]);

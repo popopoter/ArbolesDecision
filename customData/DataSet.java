@@ -10,7 +10,7 @@ public class DataSet {
 	
 	//int numberOfAtributes;
 	public Hashtable <String,Integer> atributes;
-	DataTuple[] tuples;
+	public DataTuple[] tuples;
 	
 	
 	public DataSet(){
@@ -31,7 +31,36 @@ public class DataSet {
 		
 		
 	}
-	
+	public DataSet(DataSet ogDataSet){
+		atributes = new Hashtable <String, Integer> (ogDataSet.atributes);
+		 int nTuples = ogDataSet.countTuples();
+		 tuples = new DataTuple[nTuples];
+		 int i = 0;
+		 for(DataTuple tuple : ogDataSet.tuples){
+			
+			 tuples[i] = new DataTuple(ogDataSet.tuples[i]);
+			 i++;
+			} 
+		
+		
+		
+	}
+	//Numero de tuplas
+	public int countRawTuples(){
+		int count = 0;
+		for(DataTuple tuple : tuples){
+			count++;
+		} 
+		return count;
+	}
+	public int countTuples(){
+		int count = 0;
+		for(DataTuple tuple : tuples){
+			if(tuple.active)
+			count++;
+		} 
+		return count;
+	}
 	public void eliminarAtributo(String atribute){
 		
 		System.out.println("Eliminando "+atribute);
@@ -39,10 +68,10 @@ public class DataSet {
 		
 	}
 	
-	public int count(int posicion){
+	/*public int count(int posicion){
 		
 		return posicion;
-	}
+	}*/
 	public ArrayList <String>  getAtributes(){
 		Enumeration <String>  enumeration = atributes.keys();
 		ArrayList<String> atributes = new ArrayList<String>();
@@ -73,32 +102,94 @@ public class DataSet {
 			}
 			System.out.println("  ");
 			
-			if(i > 10)
+			if(i > 100)
 				break;
 			i++;
 			}
 		}
 	}
-			public Boolean sameClass(String clas){
-			int indx = atributes.get(clas);
-			String tmp = tuples[0].valores[indx];
-			for(DataTuple d : tuples){
-				if(d.valores[indx] != tmp && d.active){
-					
-					return false;
+			public String sameClass(String clas){
 				
-				}
-			}
-			return true;
-		}
-		public void eliminar(String atributo, String valor){
-			int indx = atributes.get(atributo);
+			int indx = atributes.get(clas);
+			String s = "";
 			for(DataTuple d : tuples){
-				System.out.println(d.valores[indx]+" / "+valor );
+				
+				if(d.active && s.isEmpty()){
+					
+					s = d.valores[indx];
+					
+			
+			}else if(d.active &&  !(s.equals(d.valores[indx]))){
+				
+				return "";
+			}
+			}
+			
+	
+			return s;
+		}
+		public String claseMayoritaria(){
+			int countRun = 0;
+			int countEat = 0;
+			for(DataTuple d : tuples){
+				if (d.valores[0].equals("Eat") && d.active)
+					countEat++;	
+				if( d.valores[0].equals("Run") && d.active)
+					countRun++;
+				 
+				//System.out.println( d.valores[0] + "/" +"Eat" +"="+ d.valores[0].equals("Eat"));
+				if(countRun> 100)
+					break;
+			}
+			if(countEat > countRun)
+				return "Eat";
+			return "Run";
+		}
+		public void eliminar(String atribute, String valor){
+			int indx = atributes.get(atribute);
+			for(DataTuple d : tuples){
+				
 				if(d.valores[indx].equals(valor)){
 					d.disactive();
 				}
 			}
 		}
+			
 		
+		public ArrayList <String> atributeValues(String atribute){
+			ArrayList<String> values = new ArrayList<String>();
+			int atributeIndex = atributes.get(atribute);
+			for(DataTuple tuple : tuples)
+				if(!values.contains(tuple.valores[atributeIndex])){
+					
+					values.add(tuple.valores[atributeIndex]);
+					
+				}
+			
+			return values;
+			
+			
+		}
+		public DataSet divide(String atribute, String subClass){
+			
+			DataSet nuevoDataSet = new DataSet(this);
+			int atributeIndex = atributes.get(atribute);
+			
+			for(DataTuple tuple : nuevoDataSet.tuples){
+				
+				if((tuple.valores[atributeIndex].compareTo(subClass)!=0))
+					tuple.disactive();
+				
+					
+				}
+			nuevoDataSet.eliminarAtributo(atribute);
+			return nuevoDataSet;
+}
+			
+			
+			
+			
+			
+			
+		 
 } 

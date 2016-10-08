@@ -19,7 +19,7 @@ public class Eat implements  Strategy {
 	@Override
 	public String toString(){
 		
-		return "EAT";
+		return "Eat";
 		
 	}
 }

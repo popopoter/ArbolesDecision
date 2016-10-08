@@ -1,23 +1,27 @@
 package ArbolesDecision.pacman;
 
+import java.util.ArrayList;
+
 import ArbolesDecision.customData.DataSet;
 import ArbolesDecision.dataRecording.DataSaverLoader;
 import ArbolesDecision.dataRecording.DataTuple;
 public class DataTester {
 	public static void main(String... args) {
 		//DataTuple[] tuples = DataSaverLoader.LoadPacManData();
-		System.out.println("Hola");
 		DataSet s = new DataSet();
 		
+		//Orden raya
 		s.atributes.put("Strategy",0);
 		s.atributes.put("Distance",1);
-		s.print();
-		s.eliminarAtributo("Distance");
-		s.print();
-		System.out.println(s.sameClass("Strategy"));
-		s.eliminar("Strategy", "Run");
-		s.print();
-		System.out.println(s.sameClass("Strategy"));
+		System.out.println(s.countTuples());
+		System.out.println(s.claseMayoritaria());
+		DataSet j = s.divide("Strategy", "Eat");
+		System.out.println(j.sameClass("Strategy"));
+		//s.print();
+		//System.out.println(s.claseMayoritaria());
+		//ArrayList<String> list = s.atributeValues("Strategy");
+		
+		
 		/*int counter = 0;
 		System.out.println("");
 		for (DataTuple d : tuples) {

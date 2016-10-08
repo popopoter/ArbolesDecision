@@ -6,7 +6,7 @@ public class SeleccionAtributo {
 	public static String random(){
 		
 		
-		return "";
+		return "Distance";
 	}
 
 }

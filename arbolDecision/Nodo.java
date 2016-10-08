@@ -7,7 +7,7 @@ public class Nodo {
 	
 	String solution;
 	//int value;
-	atribute atribute;
+	String atribute;
 	Dictionary <String,Nodo> children;
 	
 	
