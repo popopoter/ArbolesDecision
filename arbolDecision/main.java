@@ -9,9 +9,9 @@ public class main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		tree tree = new tree();
+		Tree tree = new Tree();
 		
-		DataTuple test = new DataTuple("Run","CLOSE");
+		DataTuple test = new DataTuple("as","FAR");
 		 Hashtable <String,Integer> atributes;
 		 atributes =  new Hashtable<String,Integer>();
 		atributes.put("Strategy",0);

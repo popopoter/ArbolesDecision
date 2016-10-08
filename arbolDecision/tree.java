@@ -6,11 +6,11 @@ import java.util.Hashtable;
 import ArbolesDecision.customData.DataSet;
 import ArbolesDecision.customData.DataTuple;
 
-public class tree {
+public class Tree {
 	
 	Nodo raiz;
 	
-	public tree(){
+	public Tree(){
 		
 		DataSet dataSet = new DataSet();
 		
@@ -26,7 +26,6 @@ public class tree {
 				String clas=dataSet.sameClass("Strategy");
 				if(!(clas.isEmpty())){
 					nuevoNodo.solution = clas;
-					System.out.println("Bien");
 					return nuevoNodo;
 				}
 					
@@ -62,7 +61,7 @@ public class tree {
 				return nuevoNodo;
 	}
 
-	public void recorrer(DataTuple tuple,Hashtable <String,Integer> atributes){
+	public String recorrer(DataTuple tuple,Hashtable <String,Integer> atributes){
 		
 		
 		Nodo actual = raiz;
@@ -72,7 +71,7 @@ public class tree {
 			
 			actual = actual.next(tuple.valores[index]);
 		}
-		System.out.println(actual.solution);
+		return (actual.solution);
 	}
 	
 

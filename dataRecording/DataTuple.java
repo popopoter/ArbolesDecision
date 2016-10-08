@@ -68,7 +68,7 @@ public class DataTuple {
 			//move = game.getPacmanLastMoveMade();
 		//}
 
-		this.strategy = game.strategy.toString();
+		//this.strategy = game.strategy.toString();
 		
 		int blinkyDistance = 1000;
 		int inkyDistance = 1000;
