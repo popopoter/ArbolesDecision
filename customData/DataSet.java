@@ -33,7 +33,7 @@ public class DataSet {
 	}
 	public DataSet(DataSet ogDataSet){
 		atributes = new Hashtable <String, Integer> (ogDataSet.atributes);
-		 int nTuples = ogDataSet.countTuples();
+		 int nTuples = ogDataSet.countRawTuples();
 		 tuples = new DataTuple[nTuples];
 		 int i = 0;
 		 for(DataTuple tuple : ogDataSet.tuples){
@@ -60,6 +60,12 @@ public class DataSet {
 			count++;
 		} 
 		return count;
+	}
+	public boolean isEmpty(){
+		if(countTuples()==0)
+			return true;
+		else return false;
+		
 	}
 	public void eliminarAtributo(String atribute){
 		
@@ -182,7 +188,7 @@ public class DataSet {
 				
 					
 				}
-			nuevoDataSet.eliminarAtributo(atribute);
+			//nuevoDataSet.eliminarAtributo(atribute);
 			return nuevoDataSet;
 }
 			
