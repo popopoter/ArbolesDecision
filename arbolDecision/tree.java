@@ -15,7 +15,7 @@ public class Tree {
 		DataSet dataSet = new DataSet();
 		
 		dataSet.atributes.put("Strategy",0);
-		dataSet.atributes.put("Distance",1);
+		dataSet.atributes.put(,1);
 		//aasd
 		raiz = Generar_Arbol(dataSet);
 		

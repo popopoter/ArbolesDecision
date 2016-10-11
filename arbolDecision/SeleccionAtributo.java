@@ -27,7 +27,9 @@ public class SeleccionAtributo {
 		return "";
 	}
 	public double getInfo(DataSet dataSet,int index){
-		double info;
+		
+		
+		double info= 0;
 		
 		
 		return info;

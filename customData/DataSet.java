@@ -17,7 +17,7 @@ public class DataSet {
 	public DataSet(){
 		
 		//numberOfAtributes= nAtri;
-		atributes = new Hashtable<Atribute,Integer>();
+		atributes = new Hashtable<Atribute ,Integer>();
 		
 		
 		ArbolesDecision.dataRecording.DataTuple[] aux = DataSaverLoader.LoadPacManData();

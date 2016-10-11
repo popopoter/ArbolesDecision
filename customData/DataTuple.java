@@ -51,7 +51,7 @@ public class DataTuple {
 		//System.out.println(data.strategy);
 		
 	}
-	public void disactive(){
+	public void .(){
 		active = false;
 		
 	}

@@ -32,7 +32,7 @@ public final class StarterGhosts extends Controller<EnumMap<GHOST,MOVE>>
 	{
 		for(GHOST ghost : GHOST.values())	//for each ghost
 		{			
-			if(game.doesGhostRequireAction(ghost))		//if ghost requires an action
+			if(game. (ghost))		//if ghost requires an action
 			{
 				if(game.getGhostEdibleTime(ghost)>0 || closeToPower(game))	//retreat from Ms Pac-Man if edible or if Ms Pac-Man is close to power pill
 					myMoves.put(ghost,game.getApproximateNextMoveAwayFromTarget(game.getGhostCurrentNodeIndex(ghost),
