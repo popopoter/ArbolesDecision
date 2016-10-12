@@ -3,11 +3,13 @@ package ArbolesDecision.arbolDecision;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
+import Arboles.atributos.Atribute;
+
 public class Nodo {
 	
 	String solution;
 	//int value;
-	String atribute;
+	Atribute atribute;
 	Dictionary <String,Nodo> children;
 	
 	

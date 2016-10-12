@@ -4,20 +4,23 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import Arboles.atributos.Atributes;
+import Arboles.atributos.Atribute;
+import Arboles.atributos.Solution;
 import ArbolesDecision.dataRecording.DataSaverLoader;
 
 public class DataSet {
 	
 	//int numberOfAtributes;
-	public Hashtable <Atributes,Integer> atributes;
+	public Solution sol= new Solution();
+	public ArrayList <Atribute> atributes;
 	public DataTuple[] tuples;
 	
 	
 	public DataSet(){
 		
+		
 		//numberOfAtributes= nAtri;
-		atributes = new Hashtable<Atribute ,Integer>();
+		atributes = new ArrayList<Atribute>();
 		
 		
 		ArbolesDecision.dataRecording.DataTuple[] aux = DataSaverLoader.LoadPacManData();
@@ -33,13 +36,13 @@ public class DataSet {
 		
 	}
 	public DataSet(DataSet ogDataSet){
-		atributes = new Hashtable <String, Integer> (ogDataSet.atributes);
+		atributes = new ArrayList<Atribute> (  ogDataSet.atributes);
 		 int nTuples = ogDataSet.countRawTuples();
 		 tuples = new DataTuple[nTuples];
 		 int i = 0;
 		 for(DataTuple tuple : ogDataSet.tuples){
 			
-			 tuples[i] = new DataTuple(ogDataSet.tuples[i]);
+			 tuples[i] = new DataTuple(tuple);
 			 i++;
 			} 
 		
@@ -49,7 +52,8 @@ public class DataSet {
 	//Numero de tuplas
 	public int countRawTuples(){
 		int count = 0;
-		for(DataTuple tuple : tuples){
+		for (int i = 0; i < tuples.length; i++) {
+			
 			count++;
 		} 
 		return count;
@@ -68,7 +72,7 @@ public class DataSet {
 		else return false;
 		
 	}
-	public void eliminarAtributo(String atribute){
+	public void eliminarAtributo(Atribute atribute){
 		
 		System.out.println("Eliminando "+atribute);
 		atributes.remove(atribute);
@@ -89,45 +93,37 @@ public class DataSet {
 		
 		
 	}
-	public ArrayList <String>  getAtributes(){
-		Enumeration <String>  enumeration = atributes.keys();
-		ArrayList<String> atributes = new ArrayList<String>();
-				while(enumeration.hasMoreElements()){
-					atributes.add((enumeration.nextElement()));	
-				}
-		return atributes;
-	}
+	
 	public void print( ){
-		ArrayList<String> atributesString = getAtributes();
-		for(String atribute: atributesString){
-			System.out.print(atribute + " ");
+		//La clase, solucion
+		System.out.print(sol.toString());
+		//Los atributos
+		for(Atribute atribute: atributes){
+			System.out.print(atribute.toString() + " ");
 		}
 		
 		
 		System.out.println("  ");
 		
-		int i = 0;
+		
+		//Las tuplas
 		for(DataTuple d : tuples){
+			//Si esta activada 
 			if(d.active){
-			if(atributes.get("Strategy") != null){
-				
-				System.out.print(d.valores[0]+" ");
+			//Imprimimos el valor de la solucion
+			System.out.println(d.valores[sol.getIndx()]);
+			for(Atribute atribute: atributes){
+				//Imprimos el valor de cada tupla
+				System.out.print(d.valores[atribute.getIndx()]+" ");
 			}
-			if(atributes.get("Distance") != null){
-				
-				System.out.print(d.valores[1]);
 			}
-			System.out.println("  ");
 			
-			if(i > 100)
-				break;
-			i++;
-			}
 		}
+		
 	}
-			public String sameClass(String clas){
+			public String sameClass( ){
 				
-			int indx = atributes.get(clas);
+			int indx = sol.getIndx();
 			String s = "";
 			for(DataTuple d : tuples){
 				
@@ -162,8 +158,8 @@ public class DataSet {
 				return "Eat";
 			return "Run";
 		}
-		public void eliminar(String atribute, String valor){
-			int indx = atributes.get(atribute);
+		public void eliminar(Atribute atribute, String valor){
+			int indx = atribute.getIndx();
 			for(DataTuple d : tuples){
 				
 				if(d.valores[indx].equals(valor)){
@@ -173,24 +169,11 @@ public class DataSet {
 		}
 			
 		
-		public ArrayList <String> atributeValues(String atribute){
-			ArrayList<String> values = new ArrayList<String>();
-			int atributeIndex = atributes.get(atribute);
-			for(DataTuple tuple : tuples)
-				if(!values.contains(tuple.valores[atributeIndex])){
-					
-					values.add(tuple.valores[atributeIndex]);
-					
-				}
-			
-			return values;
-			
-			
-		}
-		public DataSet divide(String atribute, String subClass){
+		
+		public DataSet divide(Atribute atribute, String subClass){
 			
 			DataSet nuevoDataSet = new DataSet(this);
-			int atributeIndex = atributes.get(atribute);
+			int atributeIndex = atribute.getIndx();
 			
 			for(DataTuple tuple : nuevoDataSet.tuples){
 				

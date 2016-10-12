@@ -1,7 +1,9 @@
 package ArbolesDecision.arbolDecision;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
+import Arboles.atributos.Atribute;
 import ArbolesDecision.customData.DataTuple;
 
 public class main {
@@ -11,13 +13,12 @@ public class main {
 
 		Tree tree = new Tree();
 		
-		DataTuple test = new DataTuple("as","FAR");
-		 Hashtable <String,Integer> atributes;
-		 atributes =  new Hashtable<String,Integer>();
-		atributes.put("Strategy",0);
-		atributes.put("Distance",1);
-		System.out.println("Aqui");
-		tree.recorrer(test, atributes);
+		DataTuple test = new DataTuple("as","CLOSE");
+		 ArrayList <Atribute> atributes;
+		 atributes =  new ArrayList<Atribute>();
+	
+		
+		System.out.println(tree.recorrer(test, tree.atributes));
 		
 		/*while(!actual.isLeaf())
 			actual.next(dataTuple[Atributo]);

@@ -1,16 +1,18 @@
 package ArbolesDecision.arbolDecision;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
+import Arboles.atributos.Atribute;
 import ArbolesDecision.customData.DataSet;
 
 public class SeleccionAtributo {
 	
 	
-	public static String random(){
+	public static Atribute random(ArrayList<Atribute> atributes){
 		
 		
-		return "Distance";
+		return atributes.get(0);
 	}
 	public static double log2(double value){
 		double sol;
