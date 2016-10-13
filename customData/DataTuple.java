@@ -6,7 +6,7 @@ import ArbolesDecision.strategy.Strategy;
 public class DataTuple {
 	
 	public String[] valores;
-	int maxAtributos = 2;
+	int maxAtributos =3 ;
 	Boolean active = true;
 	public DataTuple(discreteDistance distance, Strategy s){
 		
@@ -16,21 +16,19 @@ public class DataTuple {
 		
 		
 	}
-	public DataTuple(String s,String d){
+	public DataTuple(String s,String d, String string){
 		valores = new String[maxAtributos];
 		valores[0]=s;
 		valores[1]=d;
+		valores[2]= string;
 	}
 	public DataTuple(DataTuple tupleOg){
 		
 		if(!tupleOg.active)
 			this.disactive();
 		int i = 0;
-		for(String valor: tupleOg.valores ){
-			i++;
-			
-		}
-		valores = new String[i];
+		
+		valores = new String[maxAtributos];
 		i = 0;
 		for(String valor: tupleOg.valores ){
 			
@@ -47,7 +45,7 @@ public class DataTuple {
 		
 		valores[0]= data.strategy;
 		valores[1]= data.closestGhost.toString();
-		
+		valores[2]= String.valueOf(data.eatableGhost);
 		//System.out.println(data.strategy);
 		
 	}

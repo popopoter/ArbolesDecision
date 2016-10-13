@@ -32,10 +32,13 @@ public class StarterPacMan extends Controller<MOVE>
 		for(GHOST ghost : GHOST.values())
 			if(game.getGhostEdibleTime(ghost)==0 && game.getGhostLairTime(ghost)==0)
 				if(game.getShortestPathDistance(current,game.getGhostCurrentNodeIndex(ghost))<MIN_DISTANCE)
+				{
+					game.strategy = "Run";
 					return game.getNextMoveAwayFromTarget(game.getPacmanCurrentNodeIndex(),game.getGhostCurrentNodeIndex(ghost),DM.PATH);
+				}
 		
 		//Strategy 2: find the nearest edible ghost and go after them 
-		/*
+		
 		 int minDistance=Integer.MAX_VALUE;
 		GHOST minGhost=null;		
 		
@@ -52,8 +55,10 @@ public class StarterPacMan extends Controller<MOVE>
 			}
 		
 		if(minGhost!=null)	//we found an edible ghost
+		{
+			game.strategy = "Kill";
 			return game.getNextMoveTowardsTarget(game.getPacmanCurrentNodeIndex(),game.getGhostCurrentNodeIndex(minGhost),DM.PATH);
-		*/
+		}
 		//Strategy 3: go after the pills and power pills
 		int[] pills=game.getPillIndices();
 		int[] powerPills=game.getPowerPillIndices();		
@@ -74,6 +79,10 @@ public class StarterPacMan extends Controller<MOVE>
 			targetsArray[i]=targets.get(i);
 		
 		//return the next direction once the closest target has been identified
+		
+			game.strategy = "Eat";
+			
+		
 		return game.getNextMoveTowardsTarget(current,game.getClosestNodeIndexFromNodeIndex(current,targetsArray,DM.PATH),DM.PATH);
 	}
 }

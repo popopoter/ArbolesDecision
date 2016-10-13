@@ -8,7 +8,10 @@ import ArbolesDecision.customData.DataSet;
 
 public class SeleccionAtributo {
 	
-	
+	public   SeleccionAtributo() {
+		// TODO Auto-generated constructor stub
+		
+	}
 	public static Atribute random(ArrayList<Atribute> atributes){
 		
 		
@@ -28,11 +31,54 @@ public class SeleccionAtributo {
 		
 		return "";
 	}
-	public double getInfo(DataSet dataSet,int index){
+	public double getInfoT(DataSet dataSet){
 		
-		
+		int indx = dataSet.sol.getIndx();
+		String[] valores = dataSet.sol.getValues();
+		int total = dataSet.countTuples();
 		double info= 0;
+		double aux;
+
+		for(int i = 0; i< valores.length;i++){
+			
+			 aux = dataSet.countConditional(indx, valores[i]) / (double) total;
+			 aux = (aux*log2(aux));
+			
+			info =info  - aux;
+			System.out.println(info);
+			//System.out.println(aux);
+			
+		}
 		
+		return info;
+	}
+public double getInfo(DataSet dataSet,Atribute atribute){
+		
+		int indx = atribute.getIndx();
+		String[] valores = atribute.getValues();
+		String [] clases = dataSet.sol.getValues();
+		int total = dataSet.countTuples();
+		double info= 0;
+		double aux;
+		int aux1;
+		for(int i = 0; i< valores.length;i++){
+			
+			aux1= dataSet.countConditional(indx, valores[i]);
+			
+			for(String string : clases){
+				aux = dataSet.countConditional(indx, valores[i]) / (double) total;
+				
+				
+			}
+			
+			 
+			 aux = (aux*log2(aux));
+			
+			info =info - aux;
+			System.out.println(info);
+			//System.out.println(aux);
+			
+		}
 		
 		return info;
 	}

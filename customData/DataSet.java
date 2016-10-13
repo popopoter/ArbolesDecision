@@ -51,12 +51,8 @@ public class DataSet {
 	}
 	//Numero de tuplas
 	public int countRawTuples(){
-		int count = 0;
-		for (int i = 0; i < tuples.length; i++) {
-			
-			count++;
-		} 
-		return count;
+		
+		return tuples.length;
 	}
 	public int countTuples(){
 		int count = 0;
@@ -74,7 +70,7 @@ public class DataSet {
 	}
 	public void eliminarAtributo(Atribute atribute){
 		
-		System.out.println("Eliminando "+atribute);
+		System.out.println("Eliminando "+atribute.toString());
 		atributes.remove(atribute);
 		
 	}
@@ -86,7 +82,7 @@ public class DataSet {
 	public int countConditional(int atributeIndex, String condition){
 		int count = 0;
 		for(DataTuple tuple : tuples){
-			if(tuple.valores[atributeIndex].equals(condition))
+			if(tuple.valores[atributeIndex].equals(condition)&& tuple.active)
 				count++;
 		}
 		return count;
@@ -142,7 +138,39 @@ public class DataSet {
 			return s;
 		}
 		public String claseMayoritaria(){
-			int countRun = 0;
+			int indx = sol.getIndx();
+			String[] s = sol.getValues();
+			System.out.println("Numero de cosas" + countTuples());
+			int count[] = new int [s.length];
+			
+			for(int i = 0; i<s.length;i++){
+				count[i] = 0;
+					
+			}
+			for(DataTuple d : tuples){
+				if(d.active){
+					for(int i = 0;i<s.length;i++){
+						if(d.valores[indx].equals(s[i])){
+							count[i] = count[i]+1;
+						}
+								
+					}
+				}
+					
+			}
+			int aux = 0;
+			int newIndx = 0;
+			for(int i = 0;i<count.length;i++){
+				System.out.println(count[i]);
+				if(count[i] > aux){
+					newIndx =i; 
+					aux = count[i];
+			}
+				}
+			
+			return s[newIndx];
+			
+			/*int countRun = 0;
 			int countEat = 0;
 			for(DataTuple d : tuples){
 				if (d.valores[0].equals("Eat") && d.active)
@@ -156,7 +184,7 @@ public class DataSet {
 			}
 			if(countEat > countRun)
 				return "Eat";
-			return "Run";
+			return "Run";*/
 		}
 		public void eliminar(Atribute atribute, String valor){
 			int indx = atribute.getIndx();
@@ -176,10 +204,12 @@ public class DataSet {
 			int atributeIndex = atribute.getIndx();
 			
 			for(DataTuple tuple : nuevoDataSet.tuples){
-				
-				if((tuple.valores[atributeIndex].compareTo(subClass)!=0))
+				if(tuple.active){
+				if(!(tuple.valores[atributeIndex].equals(subClass)))
+					
 					tuple.disactive();
 				
+				}
 					
 				}
 			nuevoDataSet.eliminarAtributo(atribute);

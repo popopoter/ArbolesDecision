@@ -49,7 +49,7 @@ public final class Game
 	private PacMan pacman;
 	private EnumMap<GHOST, Ghost> ghosts;
 	
-	public Strategy strategy;
+	public String strategy;
 
 	//mazes are only loaded once since they don't change over time
 	private static Maze[] mazes=new Maze[NUM_MAZES];;

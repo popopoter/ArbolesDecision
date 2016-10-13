@@ -5,6 +5,7 @@ import java.util.Hashtable;
 
 import Arboles.atributos.Atribute;
 import Arboles.atributos.ClosestAgresiveGhost;
+import Arboles.atributos.Eatable;
 import Arboles.atributos.Solution;
 import ArbolesDecision.customData.DataSet;
 import ArbolesDecision.customData.DataTuple;
@@ -19,6 +20,7 @@ public class Tree {
 		DataSet dataSet = new DataSet();
 		dataSet.sol = new Solution();
 		dataSet.atributes.add(new ClosestAgresiveGhost());
+		dataSet.atributes.add(new Eatable());
 		atributes = new ArrayList<Atribute>(dataSet.atributes);
 		//aasd
 		raiz = Generar_Arbol(dataSet);
@@ -26,20 +28,23 @@ public class Tree {
 	}
 	public Nodo Generar_Arbol(DataSet dataSet){
 				Nodo nuevoNodo = new Nodo();
+				System.out.println("Nuevo nodo "+dataSet.countTuples()+" tuplas");
 				String clas=dataSet.sameClass();
 				if(!(clas.isEmpty())){
-					
+					System.out.println("Nunca");
 					nuevoNodo.solution = clas;
 					return nuevoNodo;
 				}
-				
+				System.out.println("No tienen misma clase");
 					
 				//Si atributos vacia devuelve la mayoritaria
 				if(dataSet.atributes.size()==0){
 				
-				nuevoNodo.solution = "Super Solucion: "+dataSet.claseMayoritaria();
+				nuevoNodo.solution = dataSet.claseMayoritaria();
+				System.out.println(nuevoNodo.solution);
 				return nuevoNodo;
 				}
+				System.out.println("No quedan atributos");
 				//Aplicar metodo de seleccion de atributo
 				Atribute atri = SeleccionAtributo.random(dataSet.atributes);
 				//Etiquetar nodo como atributo y eliminar el atributo de la lista
@@ -53,10 +58,11 @@ public class Tree {
 				//dataSet.eliminarAtributo(atri);
 				
 				for(String value: valuesOfAtri){
-					System.out.println("Nuevo Hijo");
+					System.out.print("Nuevo Hijo : ");
 					System.out.println(value);
 					//Aqui se elimina  atri
-					nuevoNodo.addChild(value, Generar_Arbol(dataSet.divide(atri, value)));
+					DataSet aux = dataSet.divide(atri, value);
+					nuevoNodo.addChild(value, Generar_Arbol(aux));
 					
 				}
 				
@@ -73,13 +79,16 @@ public class Tree {
 		Nodo actual = raiz;
 		int index;
 		while(!(actual.isLeaf())){
-			
+			System.out.println(actual.atribute);
 			index = atributes.lastIndexOf(actual.atribute);
 			index = atributes.get(index).getIndx();
+			System.out.println(tuple.valores[index]);
 			actual = actual.next(tuple.valores[index]);
 		}
 		return (actual.solution);
 	}
+	
+	
 	
 
 }

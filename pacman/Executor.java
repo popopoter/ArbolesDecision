@@ -18,6 +18,7 @@ import ArbolesDecision.pacman.game.Constants.MOVE;
 import ArbolesDecision.pacman.controllers.Controller;
 import ArbolesDecision.pacman.controllers.HumanController;
 import ArbolesDecision.pacman.controllers.examples.StarterGhosts;
+import ArbolesDecision.pacman.controllers.examples.StarterPacMan;
 import ArbolesDecision.pacman.entries.pacman.MyPacMan;
 import ArbolesDecision.pacman.game.Game;
 import ArbolesDecision.pacman.game.GameView;
@@ -78,7 +79,7 @@ public class Executor
 		 */
 		
 		//run game for data collection
-		exec.runGameTimed(new DataCollectorController(new MyPacMan()),new StarterGhosts(),visual);
+		exec.runGameTimed(new DataCollectorController(new StarterPacMan()),new StarterGhosts(),visual);
 	}
 	
     /**

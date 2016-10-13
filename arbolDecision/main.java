@@ -10,12 +10,11 @@ public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+	
 		Tree tree = new Tree();
 		
-		DataTuple test = new DataTuple("as","CLOSE");
-		 ArrayList <Atribute> atributes;
-		 atributes =  new ArrayList<Atribute>();
+		DataTuple test = new DataTuple("as","CLOSE","true");
+		 
 	
 		
 		System.out.println(tree.recorrer(test, tree.atributes));

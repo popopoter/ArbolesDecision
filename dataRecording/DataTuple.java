@@ -29,6 +29,7 @@ public class DataTuple {
 	//public MOVE DirectionChosen;
 	public String strategy;
 	public int closestNonEdibleGhost;
+	public boolean eatableGhost;
 	public discreteDistance closestGhost;
 	
 	// General game state this - not normalized!
@@ -68,7 +69,7 @@ public class DataTuple {
 			//move = game.getPacmanLastMoveMade();
 		//}
 
-		//this.strategy = game.strategy.toString();
+		this.strategy = game.strategy;
 		
 		int blinkyDistance = 1000;
 		int inkyDistance = 1000;
@@ -104,6 +105,14 @@ public class DataTuple {
 		
 		closestGhost = discreteDistance.discretizeInt(closestNonEdibleGhost);
 		
+		
+		eatableGhost = false;
+		for(GHOST ghost : GHOST.values())
+			if(game.getGhostEdibleTime(ghost)>0){
+				eatableGhost = true;
+				
+			}
+				
 		/*if (game.getGhostLairTime(GHOST.BLINKY) == 0) {
 			this.isBlinkyEdible = game.isGhostEdible(GHOST.BLINKY);
 			this.blinkyDist = game.getShortestPathDistance(game.getPacmanCurrentNodeIndex(), game.getGhostCurrentNodeIndex(GHOST.BLINKY));
@@ -150,6 +159,7 @@ public class DataTuple {
 		
 		this.strategy = String.valueOf(dataSplit[0]);
 		this.closestGhost = discreteDistance.valueOf(dataSplit[1]);
+		this.eatableGhost = Boolean.valueOf(dataSplit[2]);
 				/*
 		this.isBlinkyEdible = Boolean.parseBoolean(dataSplit[1]);
 		this.isInkyEdible = Boolean.parseBoolean(dataSplit[2]);
@@ -186,6 +196,7 @@ public class DataTuple {
 		StringBuilder stringbuilder = new StringBuilder();
 		stringbuilder.append(this.strategy + ";");
 		stringbuilder.append(this.closestGhost+";");
+		stringbuilder.append(this.eatableGhost);
 		
 		/*
 		stringbuilder.append(this.isBlinkyEdible + ";");

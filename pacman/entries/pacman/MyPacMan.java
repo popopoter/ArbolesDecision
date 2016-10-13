@@ -30,9 +30,7 @@ public class MyPacMan extends Controller<MOVE>
 	public MOVE getMove(Game game, long timeDue) 
 	{
 		GHOST ghost = GHOST.BLINKY;
-		 atributes =  new Hashtable<String,Integer>();
-		atributes.put("Strategy",0);
-		atributes.put("Distance",1);
+		 
 		discreteDistance closestGhost;
 		int blinkyDistance = 1000;
 		int inkyDistance = 1000;
@@ -75,8 +73,9 @@ public class MyPacMan extends Controller<MOVE>
 		}
 		
 		closestGhost = discreteDistance.discretizeInt(closestNonEdibleGhost);
-		DataTuple test = new DataTuple("as",closestGhost.toString());
-		String accion = tree.recorrer(test, atributes);
+		DataTuple test = new DataTuple("as",closestGhost.toString(),);
+		String accion = tree.recorrer(test, tree.atributes);
+		System.out.println(accion);
 		if(accion.equals("Run"))
 			return game.getNextMoveAwayFromTarget(game.getPacmanCurrentNodeIndex(),game.getGhostCurrentNodeIndex(ghost),DM.PATH);
 		if(accion.equals("Eat")){
