@@ -19,8 +19,8 @@ public class Tree {
 		
 		DataSet dataSet = new DataSet();
 		dataSet.sol = new Solution();
-		dataSet.atributes.add(new ClosestAgresiveGhost());
-		dataSet.atributes.add(new Eatable());
+		dataSet.atributes.add(ClosestAgresiveGhost.getInstance());
+		dataSet.atributes.add(Eatable.getInstance());
 		atributes = new ArrayList<Atribute>(dataSet.atributes);
 		//aasd
 		raiz = Generar_Arbol(dataSet);
@@ -31,7 +31,7 @@ public class Tree {
 				System.out.println("Nuevo nodo "+dataSet.countTuples()+" tuplas");
 				String clas=dataSet.sameClass();
 				if(!(clas.isEmpty())){
-					System.out.println("Nunca");
+					System.out.println("Todas las tuplas tienen la misma clase: " + clas);
 					nuevoNodo.solution = clas;
 					return nuevoNodo;
 				}
@@ -41,12 +41,13 @@ public class Tree {
 				if(dataSet.atributes.size()==0){
 				
 				nuevoNodo.solution = dataSet.claseMayoritaria();
-				System.out.println(nuevoNodo.solution);
+				System.out.println("Lista de atributos vacia. Clase mayoritaria" + nuevoNodo.solution);
 				return nuevoNodo;
 				}
-				System.out.println("No quedan atributos");
+				System.out.println("Quedan atributos");
 				//Aplicar metodo de seleccion de atributo
-				Atribute atri = SeleccionAtributo.random(dataSet.atributes);
+				Atribute atri = SeleccionAtributo.ID3(atributes, dataSet);
+				
 				//Etiquetar nodo como atributo y eliminar el atributo de la lista
 				nuevoNodo.atribute = atri;
 				//Por cada valor creamos un nodo con este metodo excepto si esta vacio, 
@@ -58,12 +59,15 @@ public class Tree {
 				//dataSet.eliminarAtributo(atri);
 				
 				for(String value: valuesOfAtri){
-					System.out.print("Nuevo Hijo : ");
+					System.out.print("Nuevo Hijo: ");
 					System.out.println(value);
+					System.out.println("----------------------------------------------------------------------------------------");
 					//Aqui se elimina  atri
 					DataSet aux = dataSet.divide(atri, value);
 					nuevoNodo.addChild(value, Generar_Arbol(aux));
-					
+					System.out.println("----------------------------------------------------------------------------------------");
+					System.out.println("----------------------------------------------------------------------------------------");
+
 				}
 				
 				

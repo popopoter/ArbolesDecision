@@ -3,6 +3,7 @@ package ArbolesDecision.pacman;
 import java.util.ArrayList;
 
 import Arboles.atributos.ClosestAgresiveGhost;
+import Arboles.atributos.Eatable;
 import ArbolesDecision.arbolDecision.SeleccionAtributo;
 import ArbolesDecision.customData.DataSet;
 import ArbolesDecision.dataRecording.DataSaverLoader;
@@ -11,10 +12,12 @@ public class DataTester {
 	public static void main(String... args) {
 		//DataTuple[] tuples = DataSaverLoader.LoadPacManData();
 		DataSet s = new DataSet();
-		
+		s.atributes.add( ClosestAgresiveGhost.getInstance());
+		s.atributes.add(Eatable.getInstance());
 		SeleccionAtributo sel = new SeleccionAtributo();
 		
-		System.out.println(sel.getInfoT(s));
+		System.out.println(sel.getInfoT(s)-sel.getInfo(s, s.atributes.get(0)));
+		//System.out.println(sel.getInfo(s, s.atributes.get(0)));
 		
 		//System.out.println(s.countConditional(0,"Eat"));
 		//s.print();

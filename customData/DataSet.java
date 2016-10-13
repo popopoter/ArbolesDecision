@@ -89,6 +89,18 @@ public class DataSet {
 		
 		
 	}
+	public int countDoubleConditional(int atributeIndex, String condition,int atributeIndex1, String condition1){
+		int count = 0;
+		for(DataTuple tuple : tuples){
+			if(tuple.valores[atributeIndex].equals(condition)&& tuple.active){
+				if(tuple.valores[atributeIndex1].equals(condition1))
+					count++;
+			}
+		}
+		return count;
+		
+		
+	}
 	
 	public void print( ){
 		//La clase, solucion

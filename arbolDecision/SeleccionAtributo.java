@@ -24,58 +24,66 @@ public class SeleccionAtributo {
 		return sol;
 		
 	}
-	public static String ID3( Hashtable <String,Integer> atributes){
+	public static Atribute ID3( ArrayList <Atribute> atributes,DataSet dataSet){
 		
-		double info;
-				
 		
-		return "";
+		double infoT = getInfoT(dataSet);
+		double maxInfo = 0;
+		int indx = 0;
+		double aux;
+		
+		for(int i = 0; i< atributes.size();i++){
+			aux = infoT - getInfo(dataSet, atributes.get(i));
+			System.out.println(aux);
+			if(aux>maxInfo){
+				maxInfo= aux;
+				indx = i;
+			}
+			
+		}
+		System.out.println("ID3 selecciona " + atributes.get(indx) + " con una Info de: "+maxInfo);
+		return atributes.get(indx);
 	}
-	public double getInfoT(DataSet dataSet){
+	public static  double getInfoT(DataSet dataSet){
 		
 		int indx = dataSet.sol.getIndx();
 		String[] valores = dataSet.sol.getValues();
-		int total = dataSet.countTuples();
+		double total = (double) dataSet.countTuples();
 		double info= 0;
 		double aux;
 
 		for(int i = 0; i< valores.length;i++){
 			
-			 aux = dataSet.countConditional(indx, valores[i]) / (double) total;
+			 aux = dataSet.countConditional(indx, valores[i]) /  total;
 			 aux = (aux*log2(aux));
 			
 			info =info  - aux;
-			System.out.println(info);
+			
 			//System.out.println(aux);
 			
 		}
 		
 		return info;
 	}
-public double getInfo(DataSet dataSet,Atribute atribute){
+public static double getInfo(DataSet dataSet,Atribute atribute){
 		
 		int indx = atribute.getIndx();
 		String[] valores = atribute.getValues();
 		String [] clases = dataSet.sol.getValues();
-		int total = dataSet.countTuples();
+		double total = (double) dataSet.countTuples();
 		double info= 0;
-		double aux;
-		int aux1;
+		double aux=0;
+		double aux1;
 		for(int i = 0; i< valores.length;i++){
 			
-			aux1= dataSet.countConditional(indx, valores[i]);
-			
+			aux1= (double) dataSet.countConditional(indx, valores[i]);
 			for(String string : clases){
-				aux = dataSet.countConditional(indx, valores[i]) / (double) total;
-				
+				aux -= dataSet.countDoubleConditional(indx, valores[i], dataSet.sol.getIndx(), string) /  aux1;
 				
 			}
-			
+			info += aux1/total * aux;
 			 
-			 aux = (aux*log2(aux));
 			
-			info =info - aux;
-			System.out.println(info);
 			//System.out.println(aux);
 			
 		}

@@ -13,7 +13,7 @@ public class main {
 	
 		Tree tree = new Tree();
 		
-		DataTuple test = new DataTuple("as","CLOSE","true");
+		DataTuple test = new DataTuple("as","FAR","false");
 		 
 	
 		
