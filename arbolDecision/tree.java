@@ -89,6 +89,8 @@ public class Tree {
 			//System.out.println(tuple.valores[index]);
 			actual = actual.next(tuple.valores[index]);
 		}
+		
+		
 		return (actual.solution);
 	}
 	

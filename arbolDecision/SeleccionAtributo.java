@@ -26,8 +26,7 @@ public class SeleccionAtributo {
 	}
 	public static Atribute ID3( ArrayList <Atribute> atributes,DataSet dataSet){
 		System.out.println("Quedan "+ atributes.size()+" atributes");
-		for(Atribute a: atributes )
-			System.out.println(a);
+	
 		if(atributes.size()==1){
 			
 			System.out.println("Solo queda una atributo");
@@ -44,14 +43,14 @@ public class SeleccionAtributo {
 		
 		for(int i = 0; i< atributes.size();i++){
 			aux = infoT - getInfo(dataSet, atributes.get(i));
-			System.out.println(aux);
+			System.out.println("ID3 de "+atributes.get(i)+" = "+aux);
 			if(aux>maxInfo){
 				maxInfo= aux;
 				indx = i;
 			}
 			
 		}
-		System.out.println(indx);
+		
 		System.out.println("ID3 selecciona " + atributes.get(indx) + " con una Info de: "+maxInfo);
 		return atributes.get(indx);
 	}
@@ -66,12 +65,12 @@ public class SeleccionAtributo {
 		for(int i = 0; i< valores.length;i++){
 			
 			 aux = dataSet.countConditional(indx, valores[i]) /  total;
-			 System.out.println(aux);
+			 
 			 aux = (aux*log2(aux));
 			
 			info =info  - aux;
 			
-			//System.out.println(aux);
+		
 			
 		}
 		
@@ -100,7 +99,7 @@ public static double getInfo(DataSet dataSet,Atribute atribute){
 					acumulador = acumulador - aux;
 					
 				}
-				System.out.println(aux);
+				
 			}
 			info += aux1/total * acumulador;
 			 acumulador = 0;

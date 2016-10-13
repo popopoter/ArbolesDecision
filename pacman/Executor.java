@@ -79,7 +79,7 @@ public class Executor
 		 */
 		
 		//run game for data collection
-		exec.runGameTimed(new DataCollectorController(new StarterPacMan()),new StarterGhosts(),visual);
+		exec.runGameTimed(new DataCollectorController(new MyPacMan()),new StarterGhosts(),visual);
 	}
 	
     /**
