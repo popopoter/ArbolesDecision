@@ -186,7 +186,22 @@ public class DataSet {
 			return nuevoDataSet;
 }
 			
-			
+		public int countEat(){
+			int countEat = 0;
+			for(DataTuple d : tuples){
+				if (d.valores[0].equals("Eat") && d.active)
+					countEat++;	
+			}
+				return countEat;
+		}	
+			public int countRun(){
+				int countRun = 0;
+				for(DataTuple d : tuples){
+					if (d.valores[0].equals("Run") && d.active)
+						countRun++;	
+				}
+					return countRun;
+			}		
 			
 			
 			
