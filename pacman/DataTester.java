@@ -15,8 +15,13 @@ public class DataTester {
 		s.atributes.add( ClosestAgresiveGhost.getInstance());
 		s.atributes.add(Eatable.getInstance());
 		SeleccionAtributo sel = new SeleccionAtributo();
+		//System.out.println(s.countConditional(0, "Kill"));
+		//System.out.println(s.countConditional(0, "Eat"));
+		System.out.println(s.countDoubleConditional(0, "Run", 2, "true"));
+		System.out.println(s.countConditional(0, "Run"));
+		System.out.println(s.countTuples());
+		System.out.println(sel.getInfoT(s));
 		
-		System.out.println(sel.getInfoT(s)-sel.getInfo(s, s.atributes.get(0)));
 		//System.out.println(sel.getInfo(s, s.atributes.get(0)));
 		
 		//System.out.println(s.countConditional(0,"Eat"));

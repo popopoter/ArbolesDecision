@@ -25,8 +25,18 @@ public class SeleccionAtributo {
 		
 	}
 	public static Atribute ID3( ArrayList <Atribute> atributes,DataSet dataSet){
-		
-		
+		System.out.println("Quedan "+ atributes.size()+" atributes");
+		for(Atribute a: atributes )
+			System.out.println(a);
+		if(atributes.size()==1){
+			
+			System.out.println("Solo queda una atributo");
+			for(Atribute atri: atributes){
+				return atri;
+				
+			}
+			
+		}
 		double infoT = getInfoT(dataSet);
 		double maxInfo = 0;
 		int indx = 0;
@@ -41,6 +51,7 @@ public class SeleccionAtributo {
 			}
 			
 		}
+		System.out.println(indx);
 		System.out.println("ID3 selecciona " + atributes.get(indx) + " con una Info de: "+maxInfo);
 		return atributes.get(indx);
 	}
@@ -49,12 +60,13 @@ public class SeleccionAtributo {
 		int indx = dataSet.sol.getIndx();
 		String[] valores = dataSet.sol.getValues();
 		double total = (double) dataSet.countTuples();
-		double info= 0;
+		double info= 0.0;
 		double aux;
 
 		for(int i = 0; i< valores.length;i++){
 			
 			 aux = dataSet.countConditional(indx, valores[i]) /  total;
+			 System.out.println(aux);
 			 aux = (aux*log2(aux));
 			
 			info =info  - aux;
@@ -74,15 +86,24 @@ public static double getInfo(DataSet dataSet,Atribute atribute){
 		double info= 0;
 		double aux=0;
 		double aux1;
+		double acumulador=0;
 		for(int i = 0; i< valores.length;i++){
 			
 			aux1= (double) dataSet.countConditional(indx, valores[i]);
+			
 			for(String string : clases){
-				aux -= dataSet.countDoubleConditional(indx, valores[i], dataSet.sol.getIndx(), string) /  aux1;
-				
+				//System.out.println(aux1+" para "+valores[i] +"/" + dataSet.countDoubleConditional(indx, valores[i], dataSet.sol.getIndx(), string) );
+				aux = dataSet.countDoubleConditional(indx, valores[i], dataSet.sol.getIndx(), string) ;
+				if(aux != 0){
+					aux /= (double) aux1;
+					aux = aux*log2(aux);
+					acumulador = acumulador - aux;
+					
+				}
+				System.out.println(aux);
 			}
-			info += aux1/total * aux;
-			 
+			info += aux1/total * acumulador;
+			 acumulador = 0;
 			
 			//System.out.println(aux);
 			

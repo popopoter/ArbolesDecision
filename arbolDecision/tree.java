@@ -28,14 +28,14 @@ public class Tree {
 	}
 	public Nodo Generar_Arbol(DataSet dataSet){
 				Nodo nuevoNodo = new Nodo();
-				System.out.println("Nuevo nodo "+dataSet.countTuples()+" tuplas");
+				System.out.println("Nuevo nodo "+dataSet.countTuples()+" tuplas / con " + dataSet.atributes.size()+" atributos");
 				String clas=dataSet.sameClass();
 				if(!(clas.isEmpty())){
 					System.out.println("Todas las tuplas tienen la misma clase: " + clas);
 					nuevoNodo.solution = clas;
 					return nuevoNodo;
 				}
-				System.out.println("No tienen misma clase");
+				
 					
 				//Si atributos vacia devuelve la mayoritaria
 				if(dataSet.atributes.size()==0){
@@ -44,9 +44,9 @@ public class Tree {
 				System.out.println("Lista de atributos vacia. Clase mayoritaria" + nuevoNodo.solution);
 				return nuevoNodo;
 				}
-				System.out.println("Quedan atributos");
+				
 				//Aplicar metodo de seleccion de atributo
-				Atribute atri = SeleccionAtributo.ID3(atributes, dataSet);
+				Atribute atri = SeleccionAtributo.ID3(dataSet.atributes, dataSet);
 				
 				//Etiquetar nodo como atributo y eliminar el atributo de la lista
 				nuevoNodo.atribute = atri;
@@ -65,8 +65,8 @@ public class Tree {
 					//Aqui se elimina  atri
 					DataSet aux = dataSet.divide(atri, value);
 					nuevoNodo.addChild(value, Generar_Arbol(aux));
-					System.out.println("----------------------------------------------------------------------------------------");
-					System.out.println("----------------------------------------------------------------------------------------");
+					System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
+			
 
 				}
 				
@@ -83,10 +83,10 @@ public class Tree {
 		Nodo actual = raiz;
 		int index;
 		while(!(actual.isLeaf())){
-			System.out.println(actual.atribute);
+			//System.out.println(actual.atribute);
 			index = atributes.lastIndexOf(actual.atribute);
 			index = atributes.get(index).getIndx();
-			System.out.println(tuple.valores[index]);
+			//System.out.println(tuple.valores[index]);
 			actual = actual.next(tuple.valores[index]);
 		}
 		return (actual.solution);
