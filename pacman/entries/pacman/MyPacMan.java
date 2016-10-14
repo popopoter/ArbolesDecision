@@ -66,7 +66,7 @@ public class MyPacMan extends Controller<MOVE>
 		
 		if(minGhost!=null)	//we found an edible ghost
 		{
-			game.strategy = "Kill";
+			game.strategy = "Killi";
 			if(!game.strategy.equals(solution))
 				analitics.erro();
 			analitics.normal();
